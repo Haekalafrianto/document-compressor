@@ -1,2 +1,2 @@
 # document-compressor
-Compressor for document that running in localhost
+Compressor for document that running on localhost
