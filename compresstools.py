@@ -1,19 +1,12 @@
 import os
-from PyPDF2 import PdfReader, PdfWriter
+import pikepdf
 from PIL import Image
 
 # --- PDF Compressor --- #
 def compress_pdf(input_file, output_file):
-    reader = PdfReader(input_file)
-    writter = PdfWriter()
-
-    for page in reader.pages:
-        writter.add_page(page)
-
-    writter.add_metadata(reader.metadata)
-
-    with open(output_file, "wb") as f:
-        writter.write(f)
+    pdf = pikepdf.open(input_file)
+    pdf.save(output_file, optimize=True, compress_streams=True, object_stream_mode=True)
+    pdf.close()
 
     print(f"PDF compressed and saved to {output_file}")
 
