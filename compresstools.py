@@ -19,7 +19,7 @@ def compress_pdf(input_file, output_file):
 
 # --- Image Compressor --- #
 def compress_image(input_file, output_file, quality=60):
-    img = image.open(input_file)
+    img = Image.open(input_file)
 
     if img.mode in ("RGBA", "P"):
         img = img.convert("RGB")
@@ -29,7 +29,7 @@ def compress_image(input_file, output_file, quality=60):
 
 # --- Dispatcher --- #
 def compress_file(input_file, output_file, file_type, quality=60):
-    ext = os.path.splitext(input_file)[1].Lower()
+    ext = os.path.splitext(input_file)[1].lower()
 
     if ext == "pdf" or ext == ".pdf":
         compress_pdf(input_file, output_file)
